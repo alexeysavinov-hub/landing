@@ -1,34 +1,39 @@
 /* ============================================================
    TOP APP GAMES — landing page
-   Cinematic violet / amber atmosphere
+   Brand palette · calm deep-violet / gold
    ============================================================ */
 
 :root {
   /* Background tones */
-  --bg-void:        #0c0418;
-  --bg-deep:        #18092f;
-  --bg-mid:         #251245;
-  --bg-frame:       #2b1450;
+  --bg-void:        #14102a;
+  --bg-deep:        #1A1433;
+  --bg-mid:         #2C2260;
+  --bg-frame:       #2C2260;
+
+  /* Brand */
+  --gold:           #F5A623;
+  --gold-soft:      #ffc46b;
+  --violet:         #7B5CF0;
+  --violet-bright:  #9a80f5;
+  --teal:           #3ABFB1;
 
   /* Surfaces */
-  --surf-glass:     rgba(255, 235, 255, 0.05);
-  --surf-glass-2:   rgba(255, 235, 255, 0.08);
-  --surf-card:      #1e0d3a;
-  --border-frame:   rgba(255, 240, 255, 0.85);
-  --border-soft:    rgba(255, 220, 255, 0.12);
+  --surf-glass:     rgba(232, 234, 240, 0.05);
+  --surf-glass-2:   rgba(232, 234, 240, 0.08);
+  --surf-card:      #221a47;
+  --border-frame:   rgba(232, 234, 240, 0.30);
+  --border-soft:    rgba(232, 234, 240, 0.10);
 
-  /* Accents */
-  --violet:         oklch(0.65 0.22 305);
-  --violet-bright:  oklch(0.74 0.22 305);
-  --magenta:        oklch(0.72 0.24 350);
-  --pink-glow:      oklch(0.82 0.16 355);
-  --cyan:           oklch(0.82 0.13 200);
-  --amber:          oklch(0.82 0.16 65);
+  /* Legacy accent aliases → mapped to calm brand tones */
+  --magenta:        #7B5CF0;
+  --pink-glow:      #9a80f5;
+  --cyan:           #3ABFB1;
+  --amber:          #F5A623;
 
   /* Text */
-  --text-hi:        #fbeeff;
-  --text-mid:       #d6c4e8;
-  --text-low:       #9583b3;
+  --text-hi:        #E8EAF0;
+  --text-mid:       #b9bacf;
+  --text-low:       #7e7fa0;
 
   /* Type */
   --font-display:   "Lilita One", "Bagel Fat One", system-ui, sans-serif;
@@ -50,24 +55,22 @@ body {
   letter-spacing: 0.005em;
 }
 
-/* ---------- The signature white inner frame ---------- */
+/* ---------- The signature inner frame ---------- */
 .app-shell {
   min-height: 100vh;
   padding: 18px;
   background:
-    radial-gradient(1200px 700px at 10% -10%, #3a1764 0%, transparent 55%),
-    radial-gradient(900px 600px at 110% 30%, #5b1e8f 0%, transparent 50%),
-    radial-gradient(1000px 800px at 50% 110%, #2a0c52 0%, transparent 60%),
-    var(--bg-void);
+    radial-gradient(1200px 800px at 50% -10%, #2C2260 0%, transparent 60%),
+    var(--bg-deep);
 }
 
 .inner-frame {
-  border: 2px solid var(--border-frame);
+  border: 1.5px solid var(--border-frame);
   border-radius: 28px;
   overflow: hidden;
   position: relative;
   box-shadow:
-    0 0 0 1px rgba(255, 240, 255, 0.04),
+    0 0 0 1px rgba(232, 234, 240, 0.03),
     0 30px 80px -20px rgba(0,0,0,0.6);
 }
 
@@ -94,8 +97,7 @@ body {
   letter-spacing: 0.005em;
   color: var(--text-hi);
   text-shadow:
-    0 0 24px rgba(255, 200, 255, 0.35),
-    0 0 60px rgba(180, 80, 255, 0.35);
+    0 0 30px rgba(123, 92, 240, 0.25);
 }
 
 .eyebrow {
@@ -103,7 +105,7 @@ body {
   text-transform: uppercase;
   letter-spacing: 0.32em;
   font-size: 11px;
-  color: var(--pink-glow);
+  color: var(--gold);
   display: inline-flex;
   align-items: center;
   gap: 10px;
@@ -111,7 +113,7 @@ body {
 .eyebrow::before {
   content: "";
   width: 24px; height: 1px;
-  background: var(--pink-glow);
+  background: var(--gold);
   display: inline-block;
 }
 
@@ -139,28 +141,27 @@ body {
   white-space: nowrap;
 }
 .btn--primary {
-  background: linear-gradient(135deg, var(--magenta), var(--violet));
-  color: #fff;
+  background: linear-gradient(135deg, var(--gold), var(--gold-soft));
+  color: #2a1c05;
+  font-weight: 400;
   box-shadow:
-    0 0 0 1px rgba(255,255,255,0.2) inset,
-    0 12px 28px -8px var(--magenta),
-    0 0 40px -4px rgba(220,100,255,0.45);
+    0 0 0 1px rgba(255,255,255,0.25) inset,
+    0 10px 24px -10px rgba(245, 166, 35, 0.6);
 }
 .btn--primary:hover {
   transform: translateY(-2px);
   box-shadow:
-    0 0 0 1px rgba(255,255,255,0.3) inset,
-    0 18px 38px -8px var(--magenta),
-    0 0 60px -4px rgba(220,100,255,0.7);
+    0 0 0 1px rgba(255,255,255,0.35) inset,
+    0 16px 32px -10px rgba(245, 166, 35, 0.75);
 }
 .btn--ghost {
-  background: rgba(255,255,255,0.06);
+  background: rgba(232,234,240,0.06);
   color: var(--text-hi);
-  border: 1px solid rgba(255,255,255,0.18);
+  border: 1px solid rgba(232,234,240,0.18);
   backdrop-filter: blur(10px);
 }
 .btn--ghost:hover {
-  background: rgba(255,255,255,0.12);
+  background: rgba(232,234,240,0.12);
   transform: translateY(-2px);
 }
 .btn--sm { padding: 10px 18px; font-size: 13px; }
@@ -178,10 +179,10 @@ body {
   bottom: -10px;
   width: 4px; height: 4px;
   border-radius: 50%;
-  background: var(--amber);
-  box-shadow: 0 0 12px 2px var(--amber);
+  background: var(--gold);
+  box-shadow: 0 0 10px 1px var(--gold);
   animation: emberRise linear infinite;
-  opacity: 0.85;
+  opacity: 0.5;
 }
 @keyframes emberRise {
   0%   { transform: translateY(0) translateX(0) scale(1); opacity: 0; }
@@ -197,9 +198,9 @@ body {
   display: flex; align-items: center; justify-content: space-between;
   padding: 14px 28px;
   border-radius: 18px;
-  background: rgba(20, 8, 40, 0.6);
+  background: rgba(26, 20, 51, 0.7);
   backdrop-filter: blur(18px) saturate(140%);
-  border: 1px solid rgba(255,240,255,0.10);
+  border: 1px solid rgba(232,234,240,0.10);
   transition: transform .35s ease, background .35s ease;
 }
 .nav__brand {
@@ -220,7 +221,7 @@ body {
   width: auto;
   object-fit: contain;
   display: block;
-  filter: drop-shadow(0 4px 14px rgba(255, 190, 80, 0.35));
+  filter: drop-shadow(0 4px 12px rgba(245, 166, 35, 0.3));
 }
 .nav__brand-mark--lg {
   height: 80px;
@@ -257,10 +258,9 @@ body {
   min-height: 92vh;
   padding: 160px 80px 100px;
   background:
-    radial-gradient(700px 500px at 75% 55%, rgba(255, 170, 90, 0.32) 0%, transparent 65%),
-    radial-gradient(600px 400px at 80% 35%, rgba(255, 110, 200, 0.28) 0%, transparent 65%),
-    radial-gradient(900px 700px at 50% 100%, rgba(140, 60, 220, 0.55) 0%, transparent 70%),
-    linear-gradient(180deg, #170828 0%, #2a0e54 55%, #4a1382 100%);
+    radial-gradient(700px 500px at 78% 50%, rgba(245, 166, 35, 0.10) 0%, transparent 60%),
+    radial-gradient(900px 700px at 40% 100%, rgba(123, 92, 240, 0.20) 0%, transparent 65%),
+    linear-gradient(180deg, #1A1433 0%, #221A45 60%, #2C2260 100%);
   overflow: hidden;
 }
 .hero__silhouette {
@@ -295,7 +295,7 @@ body {
   text-align: left;
 }
 .hero__title .accent {
-  background: linear-gradient(180deg, #fff 0%, #ffd2ec 60%, #ff95cf 100%);
+  background: linear-gradient(180deg, #ffffff 0%, #F5A623 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -331,16 +331,16 @@ body {
     conic-gradient(
       from 200deg at 50% 95%,
       transparent 0deg,
-      rgba(255, 130, 220, 0.0)  20deg,
-      rgba(255, 110, 220, 0.20) 35deg,
-      rgba(180, 130, 255, 0.28) 50deg,
-      rgba(255, 110, 220, 0.20) 65deg,
-      rgba(255, 130, 220, 0.0)  80deg,
+      rgba(245, 166, 35, 0.0)  20deg,
+      rgba(245, 166, 35, 0.16) 35deg,
+      rgba(255, 200, 110, 0.24) 50deg,
+      rgba(245, 166, 35, 0.16) 65deg,
+      rgba(245, 166, 35, 0.0)  80deg,
       transparent 360deg
     );
   filter: blur(8px);
   mix-blend-mode: screen;
-  opacity: 0.85;
+  opacity: 0.7;
   transform-origin: 50% 92%;
   animation: rayShimmer 9s cubic-bezier(0.45, 0, 0.55, 1) infinite;
   pointer-events: none;
@@ -356,8 +356,8 @@ body {
   inset: 8% 8% 8% 8%;
   z-index: 2;
   background:
-    radial-gradient(45% 45% at 50% 50%, rgba(255, 110, 220, 0.45) 0%, transparent 70%),
-    radial-gradient(55% 55% at 35% 35%, rgba(120, 180, 255, 0.30) 0%, transparent 75%);
+    radial-gradient(45% 45% at 50% 50%, rgba(245, 166, 35, 0.30) 0%, transparent 70%),
+    radial-gradient(55% 55% at 35% 35%, rgba(123, 92, 240, 0.26) 0%, transparent 75%);
   filter: blur(50px);
   animation: keyartPulse 7s ease-in-out infinite;
   pointer-events: none;
@@ -391,8 +391,8 @@ body {
     transparent 100%
   );
   filter:
-    drop-shadow(0 30px 60px rgba(40, 8, 60, 0.55))
-    drop-shadow(0 0 80px rgba(255, 100, 220, 0.28));
+    drop-shadow(0 30px 60px rgba(20, 12, 45, 0.55))
+    drop-shadow(0 0 70px rgba(245, 166, 35, 0.18));
   transform-origin: 50% 90%;
   animation: keyartFloat 9s cubic-bezier(0.45, 0, 0.55, 1) infinite;
   pointer-events: none;
@@ -409,8 +409,8 @@ body {
   inset: 0;
   z-index: 4;
   background:
-    radial-gradient(60% 40% at 50% 0%, rgba(120, 50, 200, 0.35) 0%, transparent 70%),
-    radial-gradient(80% 50% at 50% 100%, rgba(80, 20, 140, 0.55) 0%, transparent 70%);
+    radial-gradient(60% 40% at 50% 0%, rgba(123, 92, 240, 0.28) 0%, transparent 70%),
+    radial-gradient(80% 50% at 50% 100%, rgba(44, 34, 96, 0.55) 0%, transparent 70%);
   mix-blend-mode: soft-light;
   pointer-events: none;
 }
@@ -424,7 +424,7 @@ body {
   pointer-events: none;
   opacity: 0;
   background:
-    radial-gradient(closest-side, rgba(255,255,255,0.95) 0%, rgba(255,180,240,0.6) 40%, transparent 70%);
+    radial-gradient(closest-side, rgba(255,255,255,0.9) 0%, rgba(245,200,120,0.55) 40%, transparent 70%);
   animation: ksparkle 4.5s ease-in-out infinite;
 }
 .ksparkle::before,
@@ -453,7 +453,7 @@ body {
   z-index: 2;
   left: 12%; right: 12%; bottom: -2%;
   height: 22%;
-  background: radial-gradient(60% 100% at 50% 30%, rgba(255, 100, 220, 0.40) 0%, transparent 75%);
+  background: radial-gradient(60% 100% at 50% 30%, rgba(245, 166, 35, 0.28) 0%, transparent 75%);
   filter: blur(28px);
   transform-origin: 50% 80%;
   animation: stagePulse 9s cubic-bezier(0.45, 0, 0.55, 1) infinite;
@@ -523,9 +523,9 @@ body {
 /* ---------- FEATURED GAME ---------- */
 .featured {
   background:
-    radial-gradient(800px 500px at 80% 20%, rgba(120, 50, 200, 0.35) 0%, transparent 60%),
-    radial-gradient(800px 500px at 20% 80%, rgba(200, 70, 180, 0.25) 0%, transparent 60%),
-    linear-gradient(180deg, #1a0935 0%, #2a0f55 100%);
+    radial-gradient(800px 500px at 82% 25%, rgba(123, 92, 240, 0.16) 0%, transparent 60%),
+    radial-gradient(700px 500px at 15% 85%, rgba(245, 166, 35, 0.08) 0%, transparent 60%),
+    linear-gradient(180deg, #1A1433 0%, #221A45 100%);
 }
 .featured__grid {
   display: grid;
@@ -537,7 +537,7 @@ body {
 }
 .featured__copy h2 { font-size: clamp(48px, 5.5vw, 84px); margin: 22px 0 26px; }
 .featured__copy h2 .accent {
-  background: linear-gradient(180deg, #ffd2ec, #ff7fc6);
+  background: linear-gradient(180deg, #ffffff, #F5A623);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -582,7 +582,7 @@ body {
 .stat-tile__num {
   font-family: var(--font-display);
   font-size: 28px;
-  background: linear-gradient(180deg, #fff, #ffb8e0);
+  background: linear-gradient(180deg, #ffffff, #F5A623);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -615,7 +615,7 @@ body {
   box-shadow:
     0 0 0 1px rgba(255,255,255,0.05) inset,
     0 40px 90px -28px rgba(0,0,0,0.7),
-    0 0 90px -16px rgba(220, 80, 200, 0.45);
+    0 0 90px -16px rgba(123, 92, 240, 0.35);
 }
 .trailer-video {
   width: 100%;
@@ -715,8 +715,8 @@ body {
 /* ---------- ABOUT ---------- */
 .about {
   background:
-    radial-gradient(900px 600px at 90% 50%, rgba(110, 40, 200, 0.3) 0%, transparent 60%),
-    linear-gradient(180deg, #150729 0%, #20103f 100%);
+    radial-gradient(900px 600px at 88% 45%, rgba(123, 92, 240, 0.14) 0%, transparent 60%),
+    linear-gradient(180deg, #1A1433 0%, #221A45 100%);
 }
 .about__grid {
   display: grid;
@@ -760,7 +760,7 @@ body {
 .timeline__year {
   font-family: var(--font-display);
   font-size: 24px;
-  background: linear-gradient(180deg, #fff, #ffb8e0);
+  background: linear-gradient(180deg, #ffffff, #F5A623);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -797,7 +797,7 @@ body {
   text-wrap: balance;
 }
 .about__single-h .accent {
-  background: linear-gradient(180deg, #ffd2ec, #ff7fc6);
+  background: linear-gradient(180deg, #ffffff, #F5A623);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -827,7 +827,7 @@ body {
   font-family: var(--font-display);
   font-size: 30px;
   line-height: 1;
-  background: linear-gradient(180deg, #fff, #ffb8e0);
+  background: linear-gradient(180deg, #ffffff, #F5A623);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -880,7 +880,7 @@ body {
 .team-fact__val {
   font-family: var(--font-display);
   font-size: 28px;
-  background: linear-gradient(180deg, #fff, #ffb8e0);
+  background: linear-gradient(180deg, #ffffff, #F5A623);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -990,8 +990,8 @@ body {
 }
 .stats {
   background:
-    radial-gradient(900px 500px at 50% 0%, rgba(200, 80, 180, 0.25) 0%, transparent 60%),
-    linear-gradient(180deg, #1d0a3a 0%, #1a0935 100%);
+    radial-gradient(900px 500px at 50% 0%, rgba(123, 92, 240, 0.14) 0%, transparent 60%),
+    linear-gradient(180deg, #221A45 0%, #1A1433 100%);
   text-align: center;
 }
 .stats__head { max-width: 720px; margin: 0 auto 70px; }
@@ -1022,13 +1022,13 @@ body {
 .metric::before {
   content: "";
   position: absolute; inset: 0;
-  background: radial-gradient(400px 200px at 0% 0%, var(--metric-glow, rgba(220,100,220,0.25)) 0%, transparent 60%);
+  background: radial-gradient(400px 200px at 0% 0%, var(--metric-glow, rgba(123,92,240,0.18)) 0%, transparent 60%);
   pointer-events: none;
 }
 .metric__big {
   font-family: var(--font-display);
   font-size: 64px; line-height: 1;
-  background: linear-gradient(180deg, #fff, #ffaadc);
+  background: linear-gradient(180deg, #ffffff, #F5A623);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -1053,8 +1053,8 @@ body {
 /* ---------- CAREERS ---------- */
 .careers {
   background:
-    radial-gradient(900px 500px at 10% 100%, rgba(120, 50, 220, 0.3) 0%, transparent 60%),
-    linear-gradient(180deg, #170828 0%, #200e3a 100%);
+    radial-gradient(900px 500px at 10% 100%, rgba(123, 92, 240, 0.16) 0%, transparent 60%),
+    linear-gradient(180deg, #1A1433 0%, #221A45 100%);
 }
 .careers__head {
   display: grid;
@@ -1135,8 +1135,8 @@ body {
 /* ---------- NEWS ---------- */
 .news {
   background:
-    radial-gradient(800px 500px at 100% 30%, rgba(220, 80, 180, 0.2) 0%, transparent 60%),
-    linear-gradient(180deg, #1c0a37 0%, #160827 100%);
+    radial-gradient(800px 500px at 100% 30%, rgba(245, 166, 35, 0.08) 0%, transparent 60%),
+    linear-gradient(180deg, #221A45 0%, #1A1433 100%);
 }
 .news__head { max-width: 1400px; margin: 0 auto 50px; display: flex; justify-content: space-between; align-items: end; gap: 24px; flex-wrap: wrap;}
 .news__head h2 { font-size: clamp(44px, 5vw, 72px); }
@@ -1196,7 +1196,7 @@ body {
 
 /* ---------- FOOTER ---------- */
 .footer {
-  background: linear-gradient(180deg, #110522 0%, #07020f 100%);
+  background: linear-gradient(180deg, #1A1433 0%, #100C22 100%);
   padding: 100px 80px 40px;
 }
 

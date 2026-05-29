@@ -31,10 +31,10 @@
   z-index: 0;
   pointer-events: none;
   background:
-    radial-gradient(38% 30% at 22% 12%, rgba(180, 70, 255, 0.22) 0%, transparent 70%),
-    radial-gradient(34% 26% at 80% 8%, rgba(255, 90, 200, 0.18) 0%, transparent 70%),
-    radial-gradient(40% 30% at 70% 60%, rgba(90, 80, 255, 0.18) 0%, transparent 70%),
-    radial-gradient(32% 24% at 25% 88%, rgba(255, 150, 90, 0.14) 0%, transparent 70%);
+    radial-gradient(38% 30% at 22% 12%, rgba(123, 92, 240, 0.16) 0%, transparent 70%),
+    radial-gradient(34% 26% at 80% 8%, rgba(245, 166, 35, 0.08) 0%, transparent 70%),
+    radial-gradient(40% 30% at 70% 60%, rgba(123, 92, 240, 0.12) 0%, transparent 70%),
+    radial-gradient(32% 24% at 25% 88%, rgba(58, 191, 177, 0.07) 0%, transparent 70%);
   filter: blur(20px);
   animation: meshDrift 26s var(--ease-in-out-soft) infinite alternate;
 }
@@ -80,8 +80,8 @@
   z-index: -1;
   pointer-events: none;
   background:
-    radial-gradient(28% 36% at 25% 30%, rgba(190, 80, 255, 0.16) 0%, transparent 70%),
-    radial-gradient(30% 34% at 78% 65%, rgba(255, 100, 200, 0.13) 0%, transparent 70%);
+    radial-gradient(28% 36% at 25% 30%, rgba(123, 92, 240, 0.12) 0%, transparent 70%),
+    radial-gradient(30% 34% at 78% 65%, rgba(245, 166, 35, 0.07) 0%, transparent 70%);
   filter: blur(30px);
   animation: bloomDrift 22s var(--ease-in-out-soft) infinite alternate;
 }
@@ -153,16 +153,16 @@
 }
 .metric:hover, .benefit:hover {
   transform: translateY(-8px) scale(1.015);
-  box-shadow: 0 30px 60px -28px rgba(180, 60, 220, 0.55);
+  box-shadow: 0 30px 60px -28px rgba(123, 92, 240, 0.45);
 }
 .news-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 36px 70px -30px rgba(180, 60, 220, 0.5);
+  box-shadow: 0 36px 70px -30px rgba(123, 92, 240, 0.4);
 }
 .stat-tile:hover {
   transform: translateY(-4px);
-  border-color: var(--pink-glow);
-  background: rgba(255,255,255,0.07);
+  border-color: var(--gold);
+  background: rgba(232,234,240,0.07);
 }
 
 /* Cards gently breathe in place */
@@ -191,7 +191,7 @@
     padding .5s var(--ease-out-soft) !important;
 }
 .nav.is-scrolled {
-  background: rgba(16, 6, 32, 0.82);
+  background: rgba(20, 15, 40, 0.85);
   box-shadow: 0 18px 50px -24px rgba(0,0,0,0.7);
   padding-block: 10px;
 }

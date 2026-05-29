@@ -57,7 +57,7 @@ function Stats() {
       <div className="stats__head">
         <div className="eyebrow" style={{ marginBottom: 12 }}>By the numbers</div>
         <h2 className="display">A Studio Built to <span style={{
-            background: "linear-gradient(180deg, #ffd2ec, #ff7fc6)",
+            background: "linear-gradient(180deg, #ffffff, #F5A623)",
             WebkitBackgroundClip: "text", backgroundClip: "text",
             WebkitTextFillColor: "transparent"
           }}>Scale</span></h2>
@@ -106,7 +106,7 @@ function Careers() {
           <h2 className="display" style={{ marginTop: 14 }}>
             Build the next<br />
             <span style={{
-              background: "linear-gradient(180deg, #ffd2ec, #ff7fc6)",
+              background: "linear-gradient(180deg, #ffffff, #F5A623)",
               WebkitBackgroundClip: "text", backgroundClip: "text",
               WebkitTextFillColor: "transparent"
             }}>hit game</span> with us.

@@ -47,10 +47,10 @@ function Orbs({ items }) {
   const orbs = React.useMemo(
     () =>
       items || [
-        { top: "10%", left: "8%",  size: 300, color: "rgba(180,70,255,0.40)", dur: 17, dx: 60,  dy: -50 },
-        { top: "26%", left: "80%", size: 240, color: "rgba(255,90,200,0.38)", dur: 21, dx: -50, dy: 60 },
-        { top: "64%", left: "14%", size: 280, color: "rgba(90,120,255,0.34)", dur: 24, dx: 50,  dy: -40 },
-        { top: "74%", left: "72%", size: 260, color: "rgba(255,150,90,0.26)", dur: 19, dx: -40, dy: -60 },
+        { top: "10%", left: "8%",  size: 300, color: "rgba(123,92,240,0.32)", dur: 17, dx: 60,  dy: -50 },
+        { top: "26%", left: "80%", size: 240, color: "rgba(245,166,35,0.16)", dur: 21, dx: -50, dy: 60 },
+        { top: "64%", left: "14%", size: 280, color: "rgba(123,92,240,0.26)", dur: 24, dx: 50,  dy: -40 },
+        { top: "74%", left: "72%", size: 260, color: "rgba(58,191,177,0.16)", dur: 19, dx: -40, dy: -60 },
       ],
     [items]
   );
