@@ -48,13 +48,12 @@ function Nav() {
     <nav className="nav">
       <a href="#top" className="nav__brand">
         <div className="nav__brand-mark">
-          <img src={window.__resources && window.__resources.logo || "assets/logo.jpg"} alt="TOP APP GAMES" />
+          <img src={window.__resources && window.__resources.logo || "assets/logo.png"} alt="TOP APP GAMES" style={{ objectFit: "contain", width: "55px", height: "55px" }} />
         </div>
       </a>
       <ul className="nav__links">
         <li><a href="#games">Games</a></li>
         <li><a href="#studio">Studio</a></li>
-        <li><a href="#team">Team</a></li>
         <li><a href="#careers">Careers</a></li>
         <li><a href="#news">News</a></li>
         <li><a href="#contact">Contact</a></li>
@@ -114,17 +113,17 @@ function FeaturedGame() {
   const trackRef = useRef(null);
 
   const shots = [
-    { src: "https://play-lh.googleusercontent.com/Bvowm6ETQvxaj3w0GmN_HxbNjiy9KA7pgI4swUzifqVWAbS4lmZzs5g0X7cVYZYB7qmSJGY2-TqB6oZ-d9-Gi_4=w1280", cap: "01 / Battle arena" },
-    { src: "https://play-lh.googleusercontent.com/oDc_rp9Ojc2lB3kK3gyrdGKwkp9RSfiDESHrSuxP50Fh3p9YwBObTa55CykT1G5AqbRoftlAVQ0qUEDlmVgsMs8=w1280", cap: "02 / Merge mechanics" },
-    { src: "https://play-lh.googleusercontent.com/rFW8cXM2qZbrCxEQhuchjUeQB9HwNzQHYovbfl6DUtZ2Sb9kLyycSB036CBlOtUUuivA3NDKiBE2GEOuG_fgvyY=w1280", cap: "03 / PvP duel" },
-    { src: "https://play-lh.googleusercontent.com/W4My4ciJfnmGl9j0uK8tE85m7qmCToHK2AnFTrO98TIus9kAom0NjCnh9Jmkokc99Mh13LjDDKaJJF2T0VmVXg=w1280", cap: "04 / Hero roster" },
-    { src: "https://play-lh.googleusercontent.com/wZaJZVfb_-loeqVp9FrlmmZgOD-QTH3DGcXr6UV_4nrTT8iTRlHICo6X7pZ3utFGEqnFeciw8FSDfHwlf5X92Q=w1280", cap: "05 / Live event" },
-    { src: "https://play-lh.googleusercontent.com/4F8D2Sh3--4SElskt__K4SiJ2cZYOjEcim4lemzr_4IcF6AoGX03GqEIHNcdf8N85HRfLXcc2ewO4bkmhIWrdw=w1280", cap: "06 / Clan wars" },
-    { src: "https://play-lh.googleusercontent.com/IwMxwkWol_CRclTgj_kXNcIFvqjh7VbanoWnu7_yTu4fzDN8sVMFfF1TXkxqHocV4aez1SxglvFoGe47orKJmg=w1280", cap: "07 / Card deck" },
-    { src: "https://play-lh.googleusercontent.com/N73cKCfwABHPZGXspx9UWTh9NXmRjDhki43ikpPn90uYyUpNrqXxRXnwVCQoVsPxfgUvQEp2bkyWo5bPbuFz8Q=w1280", cap: "08 / Tournaments" },
-    { src: "https://play-lh.googleusercontent.com/y8V5EM1pQgsrCT1gebIAV2355Vk0L_A49BKX0LDlQdwK7Ifhgn2ooDhqtAz2FxIQfy-QLtbbnQdzUuwZeIfqAg=w1280", cap: "09 / Battle pass" },
-    { src: "https://play-lh.googleusercontent.com/CJ5Ozv8Qlv1SIDOmKp3onPwfvZdZOUdadbezjtTZNWCHSM-g-PkByQZt-eLNkKcbuwkcBiIC1D-Ors4tuRWCZA=w1280", cap: "10 / Rewards" },
-  ];
+  { src: "https://play-lh.googleusercontent.com/Bvowm6ETQvxaj3w0GmN_HxbNjiy9KA7pgI4swUzifqVWAbS4lmZzs5g0X7cVYZYB7qmSJGY2-TqB6oZ-d9-Gi_4=w1280", cap: "01 / Battle arena" },
+  { src: "https://play-lh.googleusercontent.com/oDc_rp9Ojc2lB3kK3gyrdGKwkp9RSfiDESHrSuxP50Fh3p9YwBObTa55CykT1G5AqbRoftlAVQ0qUEDlmVgsMs8=w1280", cap: "02 / Merge mechanics" },
+  { src: "https://play-lh.googleusercontent.com/rFW8cXM2qZbrCxEQhuchjUeQB9HwNzQHYovbfl6DUtZ2Sb9kLyycSB036CBlOtUUuivA3NDKiBE2GEOuG_fgvyY=w1280", cap: "03 / PvP duel" },
+  { src: "https://play-lh.googleusercontent.com/W4My4ciJfnmGl9j0uK8tE85m7qmCToHK2AnFTrO98TIus9kAom0NjCnh9Jmkokc99Mh13LjDDKaJJF2T0VmVXg=w1280", cap: "04 / Hero roster" },
+  { src: "https://play-lh.googleusercontent.com/wZaJZVfb_-loeqVp9FrlmmZgOD-QTH3DGcXr6UV_4nrTT8iTRlHICo6X7pZ3utFGEqnFeciw8FSDfHwlf5X92Q=w1280", cap: "05 / Live event" },
+  { src: "https://play-lh.googleusercontent.com/4F8D2Sh3--4SElskt__K4SiJ2cZYOjEcim4lemzr_4IcF6AoGX03GqEIHNcdf8N85HRfLXcc2ewO4bkmhIWrdw=w1280", cap: "06 / Clan wars" },
+  { src: "https://play-lh.googleusercontent.com/IwMxwkWol_CRclTgj_kXNcIFvqjh7VbanoWnu7_yTu4fzDN8sVMFfF1TXkxqHocV4aez1SxglvFoGe47orKJmg=w1280", cap: "07 / Card deck" },
+  { src: "https://play-lh.googleusercontent.com/N73cKCfwABHPZGXspx9UWTh9NXmRjDhki43ikpPn90uYyUpNrqXxRXnwVCQoVsPxfgUvQEp2bkyWo5bPbuFz8Q=w1280", cap: "08 / Tournaments" },
+  { src: "https://play-lh.googleusercontent.com/y8V5EM1pQgsrCT1gebIAV2355Vk0L_A49BKX0LDlQdwK7Ifhgn2ooDhqtAz2FxIQfy-QLtbbnQdzUuwZeIfqAg=w1280", cap: "09 / Battle pass" },
+  { src: "https://play-lh.googleusercontent.com/CJ5Ozv8Qlv1SIDOmKp3onPwfvZdZOUdadbezjtTZNWCHSM-g-PkByQZt-eLNkKcbuwkcBiIC1D-Ors4tuRWCZA=w1280", cap: "10 / Rewards" }];
+
 
   const nudge = (dir) => {
     const total = shots.length;

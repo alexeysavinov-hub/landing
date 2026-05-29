@@ -29,7 +29,6 @@ function App() {
         <Hero />
         <FeaturedGame />
         <About />
-        <Team />
         <Stats />
         <Careers />
         <News />
