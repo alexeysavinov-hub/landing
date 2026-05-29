@@ -46,31 +46,31 @@ function Embers({ count = 38 }) {
 function Orbs({ items }) {
   const orbs = React.useMemo(
     () =>
-      items || [
-        { top: "10%", left: "8%",  size: 300, color: "rgba(123,92,240,0.32)", dur: 17, dx: 60,  dy: -50 },
-        { top: "26%", left: "80%", size: 240, color: "rgba(245,166,35,0.16)", dur: 21, dx: -50, dy: 60 },
-        { top: "64%", left: "14%", size: 280, color: "rgba(123,92,240,0.26)", dur: 24, dx: 50,  dy: -40 },
-        { top: "74%", left: "72%", size: 260, color: "rgba(58,191,177,0.16)", dur: 19, dx: -40, dy: -60 },
-      ],
+    items || [
+    { top: "10%", left: "8%", size: 300, color: "rgba(123,92,240,0.32)", dur: 17, dx: 60, dy: -50 },
+    { top: "26%", left: "80%", size: 240, color: "rgba(245,166,35,0.16)", dur: 21, dx: -50, dy: 60 },
+    { top: "64%", left: "14%", size: 280, color: "rgba(123,92,240,0.26)", dur: 24, dx: 50, dy: -40 },
+    { top: "74%", left: "72%", size: 260, color: "rgba(58,191,177,0.16)", dur: 19, dx: -40, dy: -60 }],
+
     [items]
   );
   return (
     <div className="orbs">
       {orbs.map((o, i) =>
-        <span
-          key={i}
-          className="orb"
-          style={{
-            top: o.top,
-            left: o.left,
-            width: o.size,
-            height: o.size,
-            background: `radial-gradient(circle at 50% 50%, ${o.color} 0%, transparent 70%)`,
-            "--orb-dur": o.dur + "s",
-            "--orb-dx": o.dx + "px",
-            "--orb-dy": o.dy + "px",
-            animationDelay: -(i * 2.5) + "s"
-          }} />
+      <span
+        key={i}
+        className="orb"
+        style={{
+          top: o.top,
+          left: o.left,
+          width: o.size,
+          height: o.size,
+          background: `radial-gradient(circle at 50% 50%, ${o.color} 0%, transparent 70%)`,
+          "--orb-dur": o.dur + "s",
+          "--orb-dx": o.dx + "px",
+          "--orb-dy": o.dy + "px",
+          animationDelay: -(i * 2.5) + "s"
+        }} />
       )}
     </div>);
 }
@@ -110,6 +110,26 @@ function Hero() {
       </div>
 
       <div className="hero__grid">
+        <div className="hero__keyart reveal reveal--scale" style={{ width: "332px", height: "637px" }}>
+          <div className="hero__keyart-rays" />
+          <div className="hero__keyart-glow" />
+          <video
+            className="hero__keyart-img hero__keyart-video"
+            src={window.__resources && window.__resources.keyartVideo || "assets/hero-keyart.mp4"}
+            autoPlay
+            loop
+            muted
+            playsInline>
+          </video>
+          <div className="hero__keyart-stage" />
+          <div className="hero__keyart-tint" />
+          <span className="ksparkle ksparkle--1" />
+          <span className="ksparkle ksparkle--2" />
+          <span className="ksparkle ksparkle--3" />
+          <span className="ksparkle ksparkle--4" />
+          <span className="ksparkle ksparkle--5" />
+        </div>
+
         <div className="hero__copy stagger">
           <div className="hero__eyebrow eyebrow">European Mobile Game Studio · Est. 2022</div>
           <h1 className="display hero__title">
@@ -121,19 +141,6 @@ function Hero() {
             At TOP APP GAMES, strategy, competition, and fresh experiences come together
             to keep communities playing, connecting, and coming back for more.
           </p>
-        </div>
-
-        <div className="hero__keyart reveal reveal--scale">
-          <div className="hero__keyart-rays" />
-          <div className="hero__keyart-glow" />
-          <img className="hero__keyart-img" src={keyart} alt="TOP APP GAMES — heroes key art" />
-          <div className="hero__keyart-stage" />
-          <div className="hero__keyart-tint" />
-          <span className="ksparkle ksparkle--1" />
-          <span className="ksparkle ksparkle--2" />
-          <span className="ksparkle ksparkle--3" />
-          <span className="ksparkle ksparkle--4" />
-          <span className="ksparkle ksparkle--5" />
         </div>
       </div>
 
@@ -274,11 +281,11 @@ function FeaturedGame() {
 // ---------------- About / Studio ----------------
 function About() {
   const facts = [
-    { val: "2022", lbl: "Founded" },
-    { val: "Cyprus", lbl: "Headquarters" },
-    { val: "10M+", lbl: "Players reached" },
-    { val: "80+", lbl: "Countries" },
-  ];
+  { val: "2022", lbl: "Founded" },
+  { val: "Cyprus", lbl: "Headquarters" },
+  { val: "10M+", lbl: "Players reached" },
+  { val: "80+", lbl: "Countries" }];
+
 
   return (
     <section className="section about about--single" id="studio">
@@ -297,7 +304,7 @@ function About() {
         </p>
         <div className="about__facts">
           {facts.map((f) =>
-            <div className="about-fact" key={f.lbl}>
+          <div className="about-fact" key={f.lbl}>
               <div className="about-fact__val">{f.val}</div>
               <div className="about-fact__lbl">{f.lbl}</div>
             </div>
