@@ -1,0 +1,292 @@
+/* ============================================================
+   TOP APP GAMES — Fluid / airy / animated layer
+   Loaded AFTER styles.css; enhances motion & breathing room
+   ============================================================ */
+
+/* ---------- Global easing + smoothness ---------- */
+:root {
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out-soft: cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+
+/* A touch more air between major sections */
+.section { padding-block: 150px; }
+@media (max-width: 900px) { .section { padding-block: 96px; } }
+
+/* ============================================================
+   1. SLOW DRIFTING GRADIENT ATMOSPHERE
+   A soft mesh that breathes behind the whole shell
+   ============================================================ */
+.app-shell {
+  position: relative;
+}
+.app-shell::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(38% 30% at 22% 12%, rgba(180, 70, 255, 0.22) 0%, transparent 70%),
+    radial-gradient(34% 26% at 80% 8%, rgba(255, 90, 200, 0.18) 0%, transparent 70%),
+    radial-gradient(40% 30% at 70% 60%, rgba(90, 80, 255, 0.18) 0%, transparent 70%),
+    radial-gradient(32% 24% at 25% 88%, rgba(255, 150, 90, 0.14) 0%, transparent 70%);
+  filter: blur(20px);
+  animation: meshDrift 26s var(--ease-in-out-soft) infinite alternate;
+}
+@keyframes meshDrift {
+  0%   { transform: translate3d(-2%, -1%, 0) scale(1.05) rotate(0deg); }
+  50%  { transform: translate3d(3%, 2%, 0)  scale(1.12) rotate(4deg); }
+  100% { transform: translate3d(1%, -2%, 0) scale(1.06) rotate(-3deg); }
+}
+.app-shell > .inner-frame { position: relative; z-index: 1; }
+
+/* ============================================================
+   2. AMBIENT FLOATING ORBS (soft, blurred, parallax-friendly)
+   ============================================================ */
+.orbs {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(48px);
+  opacity: 0.45;
+  animation: orbFloat var(--orb-dur, 18s) var(--ease-in-out-soft) infinite alternate;
+}
+@keyframes orbFloat {
+  0%   { transform: translate3d(0, 0, 0) scale(1); }
+  100% { transform: translate3d(var(--orb-dx, 40px), var(--orb-dy, -50px), 0) scale(1.18); }
+}
+
+/* Drifting ambient bloom behind each major section
+   (painted above the base gradient, behind text via z-index:-1) */
+.featured::after,
+.about::after,
+.stats::after,
+.careers::after,
+.news::after {
+  content: "";
+  position: absolute;
+  inset: -15%;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(28% 36% at 25% 30%, rgba(190, 80, 255, 0.16) 0%, transparent 70%),
+    radial-gradient(30% 34% at 78% 65%, rgba(255, 100, 200, 0.13) 0%, transparent 70%);
+  filter: blur(30px);
+  animation: bloomDrift 22s var(--ease-in-out-soft) infinite alternate;
+}
+.about::after   { animation-duration: 26s; animation-delay: -4s; }
+.stats::after   { animation-duration: 24s; animation-delay: -8s; }
+.careers::after { animation-duration: 28s; animation-delay: -6s; }
+.news::after    { animation-duration: 25s; animation-delay: -10s; }
+@keyframes bloomDrift {
+  0%   { transform: translate3d(-3%, -2%, 0) scale(1); }
+  100% { transform: translate3d(4%, 3%, 0) scale(1.15); }
+}
+
+/* ============================================================
+   3. REFINED SCROLL REVEALS — eased + directional + stagger
+   ============================================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition:
+    opacity 1s var(--ease-out-soft),
+    transform 1.1s var(--ease-out-soft);
+}
+.reveal.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+/* Directional variants */
+.reveal--left  { transform: translateX(-48px); }
+.reveal--right { transform: translateX(48px); }
+.reveal--scale { transform: scale(0.92); }
+.reveal--left.is-in,
+.reveal--right.is-in,
+.reveal--scale.is-in { transform: none; }
+
+/* Stagger children of a marked container */
+.stagger > * {
+  opacity: 0;
+  transform: translateY(34px);
+  transition:
+    opacity 0.9s var(--ease-out-soft),
+    transform 1s var(--ease-out-soft);
+}
+.stagger.is-in > * {
+  opacity: 1;
+  transform: none;
+}
+.stagger.is-in > *:nth-child(1) { transition-delay: 0.00s; }
+.stagger.is-in > *:nth-child(2) { transition-delay: 0.08s; }
+.stagger.is-in > *:nth-child(3) { transition-delay: 0.16s; }
+.stagger.is-in > *:nth-child(4) { transition-delay: 0.24s; }
+.stagger.is-in > *:nth-child(5) { transition-delay: 0.32s; }
+.stagger.is-in > *:nth-child(6) { transition-delay: 0.40s; }
+.stagger.is-in > *:nth-child(7) { transition-delay: 0.48s; }
+.stagger.is-in > *:nth-child(8) { transition-delay: 0.56s; }
+
+/* ============================================================
+   4. SMOOTHER, AIRIER HOVER MOTION
+   ============================================================ */
+.btn { transition: transform .4s var(--ease-out-soft), box-shadow .45s var(--ease-out-soft), background .45s ease; }
+.btn--primary:hover { transform: translateY(-3px) scale(1.02); }
+
+.metric, .news-card, .job, .timeline__item, .benefit, .store-badge, .stat-tile {
+  transition:
+    transform .5s var(--ease-out-soft),
+    border-color .5s var(--ease-out-soft),
+    background .5s var(--ease-out-soft),
+    box-shadow .5s var(--ease-out-soft) !important;
+}
+.metric:hover, .benefit:hover {
+  transform: translateY(-8px) scale(1.015);
+  box-shadow: 0 30px 60px -28px rgba(180, 60, 220, 0.55);
+}
+.news-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 36px 70px -30px rgba(180, 60, 220, 0.5);
+}
+.stat-tile:hover {
+  transform: translateY(-4px);
+  border-color: var(--pink-glow);
+  background: rgba(255,255,255,0.07);
+}
+
+/* Cards gently breathe in place */
+.metric, .benefit { animation: cardBreathe 9s var(--ease-in-out-soft) infinite; }
+.benefit:nth-child(2) { animation-delay: -2s; }
+.benefit:nth-child(3) { animation-delay: -4s; }
+.benefit:nth-child(4) { animation-delay: -6s; }
+.metric:nth-child(2) { animation-delay: -3s; }
+.metric:nth-child(3) { animation-delay: -5s; }
+.metric:nth-child(4) { animation-delay: -7s; }
+@keyframes cardBreathe {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-6px); }
+}
+/* Pause the idle breathe while hovering so it doesn't fight the lift */
+.metric:hover, .benefit:hover { animation-play-state: paused; }
+
+/* ============================================================
+   5. NAV — settle on scroll + animated entrance
+   ============================================================ */
+.nav {
+  transition:
+    transform .5s var(--ease-out-soft),
+    background .5s var(--ease-out-soft),
+    box-shadow .5s var(--ease-out-soft),
+    padding .5s var(--ease-out-soft) !important;
+}
+.nav.is-scrolled {
+  background: rgba(16, 6, 32, 0.82);
+  box-shadow: 0 18px 50px -24px rgba(0,0,0,0.7);
+  padding-block: 10px;
+}
+.nav__links a { transition: color .3s var(--ease-out-soft), background .3s var(--ease-out-soft); }
+.nav__brand-mark img { transition: transform .5s var(--ease-out-soft), filter .5s var(--ease-out-soft); }
+.nav__brand:hover .nav__brand-mark img { transform: translateY(-2px) scale(1.05); }
+
+/* ============================================================
+   6. HERO — entrance via IO reveal/stagger (set in markup),
+      plus parallax target. (No pure-CSS keyframe entrance so
+      content is never stuck hidden if animations are disabled.)
+   ============================================================ */
+
+/* parallax wrapper transforms are applied inline via JS using these vars */
+.parallax { transition: transform 0.3s var(--ease-out-soft); }
+
+/* Gentle title shimmer */
+.hero__title .accent {
+  background-size: 200% 100%;
+  animation: shimmer 7s ease-in-out infinite;
+}
+@keyframes shimmer {
+  0%, 100% { background-position: 0% 50%; }
+  50%      { background-position: 100% 50%; }
+}
+
+/* Scroll hint floats */
+.hero__scrollhint { animation: hintFloat 2.6s var(--ease-in-out-soft) infinite; }
+@keyframes hintFloat {
+  0%, 100% { transform: translate(-50%, 0); opacity: 0.7; }
+  50%      { transform: translate(-50%, 8px); opacity: 1; }
+}
+
+/* ============================================================
+   7. SECTION HEADINGS — subtle float + smoother eyebrows
+   ============================================================ */
+.eyebrow::before { transition: width .6s var(--ease-out-soft); }
+.reveal.is-in .eyebrow::before,
+.is-in .eyebrow::before { width: 36px; }
+
+/* ============================================================
+   8. CAROUSEL — smoother glide + arrow polish
+   ============================================================ */
+.carousel__track {
+  transition: transform .8s var(--ease-out-soft) !important;
+}
+.carousel__btn {
+  transition: background .4s var(--ease-out-soft), transform .4s var(--ease-out-soft), border-color .4s var(--ease-out-soft);
+}
+.carousel__btn:hover { transform: scale(1.1); border-color: var(--pink-glow); }
+.carousel__btn:active { transform: scale(0.94); }
+
+/* ============================================================
+   9. FLOAT CARDS in featured phone — already float; smooth them
+   ============================================================ */
+.float-card {
+  animation-timing-function: var(--ease-in-out-soft);
+  transition: transform .5s var(--ease-out-soft), box-shadow .5s var(--ease-out-soft);
+}
+.float-card:hover { transform: translateY(-6px) scale(1.04); }
+
+/* phone gently rotates toward viewer */
+.phone-card {
+  animation: phoneSway 10s var(--ease-in-out-soft) infinite;
+}
+@keyframes phoneSway {
+  0%, 100% { transform: rotate(-1deg) translateY(0); }
+  50%      { transform: rotate(1deg) translateY(-10px); }
+}
+
+/* ============================================================
+   10. STORE + JOB ROWS — slide affordance
+   ============================================================ */
+.job__arrow { transition: background .4s var(--ease-out-soft), transform .5s var(--ease-out-soft); }
+.job:hover { transform: translateX(6px); }
+
+/* ============================================================
+   Reduced motion: respect user preference
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  .app-shell::before,
+  .orb,
+  .metric, .benefit,
+  .phone-card,
+  .float-card,
+  .hero__title .accent,
+  .hero__scrollhint { animation: none !important; }
+  .reveal, .stagger > * { transition-duration: .4s; filter: none; }
+}
+
+/* Safety net: never let content stay hidden if motion is fully disabled */
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .stagger > *, .hero__keyart {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+}

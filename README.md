@@ -1,25 +1,30 @@
 # TOP APP GAMES — Landing Page
 
-Marketing landing page for TOP APP GAMES — a European mobile game studio.
+Marketing landing page for **TOP APP GAMES** — a European mobile game studio,
+featuring its flagship title *LUDUS・Strategy Battle PvP Game*.
 
 ## Structure
 
 ```
 index.html        — entry point
-styles.css        — all styling (design system, sections, animations)
-sections-a.jsx    — Nav, Hero, Featured Game (Ludus), About
-sections-b.jsx    — Stats, Careers, News, Footer
-app.jsx           — app composition + scroll reveal
+styles.css        — design system + section styling
+animations.css    — motion layer (reveals, ambient orbs, hover, parallax)
+sections-a.jsx    — Nav, Hero, Featured (LUDUS), Studio
+sections-b.jsx    — Stats, News, Footer (+ contact form)
+app.jsx           — app composition + scroll/motion orchestration
 image-slot.js     — drag-and-drop image placeholder web component
 assets/           — logo + hero key art
 ```
 
 The page is a static site. React + Babel are loaded from CDN and JSX is
-transpiled in the browser — no build step required.
+transpiled in the browser — **no build step required**.
+
+> Note: the LUDUS trailer (Google Play CDN) and some imagery / screenshots load
+> from remote CDNs, so an internet connection is required to see them.
 
 ## Run locally
 
-Any static server works, e.g.:
+Any static server works:
 
 ```bash
 npx serve .

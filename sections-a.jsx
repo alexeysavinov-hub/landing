@@ -42,10 +42,43 @@ function Embers({ count = 38 }) {
 
 }
 
-// ---------------- Navigation ----------------
-function Nav() {
+// ---------------- Ambient floating orbs ----------------
+function Orbs({ items }) {
+  const orbs = React.useMemo(
+    () =>
+      items || [
+        { top: "10%", left: "8%",  size: 300, color: "rgba(180,70,255,0.40)", dur: 17, dx: 60,  dy: -50 },
+        { top: "26%", left: "80%", size: 240, color: "rgba(255,90,200,0.38)", dur: 21, dx: -50, dy: 60 },
+        { top: "64%", left: "14%", size: 280, color: "rgba(90,120,255,0.34)", dur: 24, dx: 50,  dy: -40 },
+        { top: "74%", left: "72%", size: 260, color: "rgba(255,150,90,0.26)", dur: 19, dx: -40, dy: -60 },
+      ],
+    [items]
+  );
   return (
-    <nav className="nav">
+    <div className="orbs">
+      {orbs.map((o, i) =>
+        <span
+          key={i}
+          className="orb"
+          style={{
+            top: o.top,
+            left: o.left,
+            width: o.size,
+            height: o.size,
+            background: `radial-gradient(circle at 50% 50%, ${o.color} 0%, transparent 70%)`,
+            "--orb-dur": o.dur + "s",
+            "--orb-dx": o.dx + "px",
+            "--orb-dy": o.dy + "px",
+            animationDelay: -(i * 2.5) + "s"
+          }} />
+      )}
+    </div>);
+}
+
+// ---------------- Navigation ----------------
+function Nav({ navRef }) {
+  return (
+    <nav className="nav" ref={navRef}>
       <a href="#top" className="nav__brand">
         <div className="nav__brand-mark">
           <img src={window.__resources && window.__resources.logo || "assets/logo.png"} alt="TOP APP GAMES" style={{ objectFit: "contain", width: "55px", height: "55px" }} />
@@ -54,7 +87,6 @@ function Nav() {
       <ul className="nav__links">
         <li><a href="#games">Games</a></li>
         <li><a href="#studio">Studio</a></li>
-        <li><a href="#careers">Careers</a></li>
         <li><a href="#news">News</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
@@ -70,6 +102,7 @@ function Hero() {
   const keyart = window.__resources && window.__resources.keyart || "assets/hero-keyart.png";
   return (
     <section className="hero" id="top">
+      <Orbs />
       <Embers count={50} />
       <div className="hero__silhouette">
         <div className="cliff cliff--l" />
@@ -77,28 +110,30 @@ function Hero() {
       </div>
 
       <div className="hero__grid">
-        <div className="hero__copy">
+        <div className="hero__copy stagger">
           <div className="hero__eyebrow eyebrow">European Mobile Game Studio · Est. 2022</div>
           <h1 className="display hero__title">
-            We Build Games<br />
-            Players <span className="accent">Live In</span>
+            We Create<br />
+            Games Players<br />
+            <span className="accent">Love</span>
           </h1>
           <p className="hero__sub">
-            TOP APP GAMES crafts competitive mobile experiences for millions of players worldwide —
-            live-service worlds with deep strategy, vibrant community, and the magic of casual play.
+            At TOP APP GAMES, strategy, competition, and fresh experiences come together
+            to keep communities playing, connecting, and coming back for more.
           </p>
-          <div className="hero__cta">
-            <a href="#play" className="btn btn--primary">▶ Play Now</a>
-            <a href="#careers" className="btn btn--ghost">Join the Team →</a>
-          </div>
         </div>
 
-        <div className="hero__keyart">
+        <div className="hero__keyart reveal reveal--scale">
           <div className="hero__keyart-rays" />
           <div className="hero__keyart-glow" />
           <img className="hero__keyart-img" src={keyart} alt="TOP APP GAMES — heroes key art" />
           <div className="hero__keyart-stage" />
           <div className="hero__keyart-tint" />
+          <span className="ksparkle ksparkle--1" />
+          <span className="ksparkle ksparkle--2" />
+          <span className="ksparkle ksparkle--3" />
+          <span className="ksparkle ksparkle--4" />
+          <span className="ksparkle ksparkle--5" />
         </div>
       </div>
 
@@ -136,92 +171,71 @@ function FeaturedGame() {
       <div className="featured__grid">
         <div className="featured__copy reveal">
           <div className="eyebrow">Featured Title</div>
-          <h2 className="display">
-            Ludus:<br />
-            <span className="accent">Merge Arena</span>
+          <h2 className="display featured__title">
+            LUDUS<span className="featured__sep">・</span><br />
+            <span className="accent">Strategy Battle PvP Game</span>
           </h2>
           <p className="body-md">
-            A live-ops PvP strategy game where merge mechanics meet real-time arena combat.
-            Build the ultimate squad, master deep tactics, and climb the global ladder — solo or with your clan.
+            A constantly evolving PvP strategy game where merge mechanics shape every battle.
+            Build your squad, outsmart rivals in real-time arenas, and rise through the global
+            rankings solo or with your clan.
           </p>
 
           <div className="store-row">
-            <a href="#" className="store-badge">
-              <span style={{ fontSize: 22 }}></span>
+            <a href="https://apps.apple.com/us/app/ludus-strategy-pvp-card-battle/id6446642912" target="_blank" rel="noopener noreferrer" className="store-badge">
+              <span className="store-badge__glyph"></span>
               <div>
                 <div className="store-badge__sub">Download on the</div>
                 <div className="store-badge__main">App Store</div>
               </div>
             </a>
-            <a href="#" className="store-badge">
-              <span style={{ fontSize: 22 }}>▶</span>
+            <a href="https://play.google.com/store/apps/details?id=com.studion.mergearena&hl=en" target="_blank" rel="noopener noreferrer" className="store-badge">
+              <span className="store-badge__glyph">▶</span>
               <div>
                 <div className="store-badge__sub">Get it on</div>
                 <div className="store-badge__main">Google Play</div>
+              </div>
+            </a>
+            <a href="https://site.ludus-game.com/" target="_blank" rel="noopener noreferrer" className="store-badge store-badge--web">
+              <span className="store-badge__glyph">🌐</span>
+              <div>
+                <div className="store-badge__sub">Visit the</div>
+                <div className="store-badge__main">Game Website</div>
               </div>
             </a>
           </div>
 
           <div className="stat-row">
             <div className="stat-tile">
-              <div className="stat-tile__num">5M+</div>
+              <div className="stat-tile__num">10M+</div>
               <div className="stat-tile__lbl">Downloads</div>
             </div>
             <div className="stat-tile">
-              <div className="stat-tile__num">PvP</div>
-              <div className="stat-tile__lbl">Real-time arena</div>
+              <div className="stat-tile__num">200K+</div>
+              <div className="stat-tile__lbl">Active player community</div>
             </div>
             <div className="stat-tile">
-              <div className="stat-tile__num">120+</div>
-              <div className="stat-tile__lbl">Live events / yr</div>
-            </div>
-            <div className="stat-tile">
-              <div className="stat-tile__num">4.7★</div>
+              <div className="stat-tile__num">4.5★</div>
               <div className="stat-tile__lbl">Player rating</div>
+            </div>
+            <div className="stat-tile">
+              <div className="stat-tile__num">Live</div>
+              <div className="stat-tile__lbl">Seasonal events &amp; clan wars</div>
             </div>
           </div>
         </div>
 
-        <div className="phone-stage reveal">
-          <div className="phone-card">
-            <div className="phone-card__notch" />
-            <div className="phone-card__screen">
-              <image-slot
-                id="ludus-phone"
-                style={{ width: "100%", height: "100%", display: "block" }}
-                shape="rect"
-                placeholder="Drop in-game screenshot">
-              </image-slot>
-            </div>
-          </div>
-
-          <div className="float-card float-card--tl">
-            <div className="float-card__icon">★</div>
-            <div>
-              <div className="float-card__num">+128</div>
-              <div className="float-card__lbl">Trophy gained</div>
-            </div>
-          </div>
-          <div className="float-card float-card--tr">
-            <div className="float-card__icon" style={{ background: "linear-gradient(135deg, var(--cyan), var(--violet))" }}>⚔</div>
-            <div>
-              <div className="float-card__num">7-Win Streak</div>
-              <div className="float-card__lbl">Arena ranked</div>
-            </div>
-          </div>
-          <div className="float-card float-card--bl">
-            <div className="float-card__icon" style={{ background: "linear-gradient(135deg, var(--amber), var(--magenta))" }}>♛</div>
-            <div>
-              <div className="float-card__num">Clan: TopApp</div>
-              <div className="float-card__lbl">Rank #14 global</div>
-            </div>
-          </div>
-          <div className="float-card float-card--br">
-            <div className="float-card__icon">⚡</div>
-            <div>
-              <div className="float-card__num">Live Event</div>
-              <div className="float-card__lbl">2d 14h left</div>
-            </div>
+        <div className="trailer-stage reveal">
+          <div className="trailer-card">
+            <video
+              className="trailer-video"
+              src="https://play-games.googleusercontent.com/vp/mp4/1280x720/Lny-7jxVEig.mp4"
+              poster="https://play-lh.googleusercontent.com/DbnSgl-ou7WzVsDQkOY7Yi1_3OScfEUh39DL50fSIrMb2ywuB_FyN23nPTfPKL302q1lxHIldP9e0qp-RRJvcg=w1280"
+              controls
+              playsInline
+              preload="metadata">
+            </video>
+            <div className="trailer-badge">▶ Official Trailer</div>
           </div>
         </div>
       </div>
@@ -259,54 +273,39 @@ function FeaturedGame() {
 
 // ---------------- About / Studio ----------------
 function About() {
-  const items = [
-  { y: "2022", h: "Studio Founded", p: "TOP APP GAMES is born in Europe with a mission to redefine competitive mobile gaming." },
-  { y: "2023", h: "First Title Ships", p: "We launch our debut casual-strategy hybrid, picking up early traction across EMEA." },
-  { y: "2024", h: "Ludus: Merge Arena", p: "Our flagship live-ops PvP title crosses 1M installs in its first quarter." },
-  { y: "2025", h: "Series A & Global Scale", p: "Strategic funding to grow live-ops, UA and game design — players in 80+ countries." },
-  { y: "2026", h: "Next-Gen Lineup", p: "Two new mobile titles in active development. The roadmap is just getting started." }];
-
+  const facts = [
+    { val: "2022", lbl: "Founded" },
+    { val: "Cyprus", lbl: "Headquarters" },
+    { val: "10M+", lbl: "Players reached" },
+    { val: "80+", lbl: "Countries" },
+  ];
 
   return (
-    <section className="section about" id="studio">
+    <section className="section about about--single" id="studio">
       <Embers count={14} />
-      <div className="about__grid">
-        <div className="about__copy reveal">
-          <div className="eyebrow">Our Studio</div>
-          <h2 className="display">
-            Crafting<br />
-            Mobile<br />
-            <span style={{
-              background: "linear-gradient(180deg, #ffd2ec, #ff7fc6)",
-              WebkitBackgroundClip: "text",
-              backgroundClip: "text",
-              WebkitTextFillColor: "transparent"
-            }}>Worlds</span>
-          </h2>
-          <p className="body-md">
-            We're an independent European studio that ships games as living worlds — not products.
-            Our expertise in live-ops, monetization, UA and end-to-end game design lets us build
-            mobile experiences that grow with their players, season after season.
-          </p>
-          <div className="about__quote">
-            "We don't make games for the launch day — we make games for the thousandth day."
-          </div>
-        </div>
-
-        <ul className="timeline reveal">
-          {items.map((it) =>
-          <li className="timeline__item" key={it.y}>
-              <div className="timeline__year">{it.y}</div>
-              <div>
-                <div className="timeline__h">{it.h}</div>
-                <div className="timeline__p">{it.p}</div>
-              </div>
-            </li>
+      <div className="about__single reveal">
+        <div className="eyebrow">Our Studio</div>
+        <h2 className="display about__single-h">
+          We craft mobile games as living worlds —{" "}
+          <span className="accent">not products.</span>
+        </h2>
+        <p className="about__single-p">
+          TOP APP GAMES is an independent European studio building competitive, live-service
+          mobile experiences. From game design and live-ops to user acquisition and community,
+          we own every part of the craft — shipping games that grow with their players,
+          season after season.
+        </p>
+        <div className="about__facts">
+          {facts.map((f) =>
+            <div className="about-fact" key={f.lbl}>
+              <div className="about-fact__val">{f.val}</div>
+              <div className="about-fact__lbl">{f.lbl}</div>
+            </div>
           )}
-        </ul>
+        </div>
       </div>
     </section>);
 
 }
 
-Object.assign(window, { Nav, Hero, FeaturedGame, About, Embers });
+Object.assign(window, { Nav, Hero, FeaturedGame, About, Embers, Orbs });
