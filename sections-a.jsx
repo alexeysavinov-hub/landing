@@ -110,12 +110,12 @@ function Hero() {
       </div>
 
       <div className="hero__grid">
-        <div className="hero__keyart reveal reveal--scale" style={{ width: "332px", height: "637px" }}>
+        <div className="hero__keyart hero__keyart--square reveal reveal--scale" style={{ width: "500px", height: "500px" }}>
           <div className="hero__keyart-rays" />
           <div className="hero__keyart-glow" />
           <video
             className="hero__keyart-img hero__keyart-video"
-            src={window.__resources && window.__resources.keyartVideo || "assets/hero-keyart.mp4"}
+            src={window.__resources && window.__resources.keyartVideo || "assets/hero-keyart.webm"}
             autoPlay
             loop
             muted
@@ -189,26 +189,42 @@ function FeaturedGame() {
           </p>
 
           <div className="store-row">
-            <a href="https://apps.apple.com/us/app/ludus-strategy-pvp-card-battle/id6446642912" target="_blank" rel="noopener noreferrer" className="store-badge">
-              <span className="store-badge__glyph"></span>
-              <div>
-                <div className="store-badge__sub">Download on the</div>
-                <div className="store-badge__main">App Store</div>
-              </div>
+            <a href="https://apps.apple.com/us/app/ludus-strategy-pvp-card-battle/id6446642912" target="_blank" rel="noopener noreferrer" className="store-badge" aria-label="Download on the App Store">
+              <span className="store-badge__glyph" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+                  <path d="M17.05 12.54c-.02-2.07 1.69-3.06 1.77-3.11-.96-1.41-2.46-1.6-3-1.62-1.28-.13-2.5.75-3.15.75-.65 0-1.65-.73-2.72-.71-1.4.02-2.69.81-3.41 2.06-1.45 2.52-.37 6.25 1.04 8.3.69 1 1.51 2.13 2.58 2.09 1.04-.04 1.43-.67 2.69-.67 1.25 0 1.61.67 2.71.65 1.12-.02 1.83-1.02 2.51-2.03.79-1.16 1.12-2.29 1.13-2.35-.02-.01-2.17-.83-2.19-3.3zM15.0 5.88c.57-.69.96-1.65.85-2.6-.82.03-1.82.55-2.41 1.23-.53.61-1 1.59-.87 2.52.91.07 1.85-.46 2.43-1.15z"/>
+                </svg>
+              </span>
+              <span className="store-badge__text">
+                <span className="store-badge__sub">Download on the</span>
+                <span className="store-badge__main">App Store</span>
+              </span>
             </a>
-            <a href="https://play.google.com/store/apps/details?id=com.studion.mergearena&hl=en" target="_blank" rel="noopener noreferrer" className="store-badge">
-              <span className="store-badge__glyph">▶</span>
-              <div>
-                <div className="store-badge__sub">Get it on</div>
-                <div className="store-badge__main">Google Play</div>
-              </div>
+            <a href="https://play.google.com/store/apps/details?id=com.studion.mergearena&hl=en" target="_blank" rel="noopener noreferrer" className="store-badge" aria-label="Get it on Google Play">
+              <span className="store-badge__glyph" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="20" height="20">
+                  <path d="M3.6 2.4c-.3.2-.5.6-.5 1.1v17c0 .5.2.9.5 1.1l.1.1L13 12.6v-.2L3.7 2.3l-.1.1z" fill="#34A853"/>
+                  <path d="M16.3 15.7L13 12.6v-.2l3.3-3.1.1.1 3.9 2.2c1.1.6 1.1 1.6 0 2.3l-3.9 2.2-.1-.1z" fill="#FBBC04"/>
+                  <path d="M16.4 15.6L13 12.5 3.6 21.6c.4.4 1 .4 1.7.1l11.1-6.1" fill="#EA4335"/>
+                  <path d="M16.4 9.4L5.3 3.3c-.7-.4-1.3-.3-1.7.1l9.4 9.1 3.4-3.1z" fill="#4285F4"/>
+                </svg>
+              </span>
+              <span className="store-badge__text">
+                <span className="store-badge__sub">Get it on</span>
+                <span className="store-badge__main">Google Play</span>
+              </span>
             </a>
-            <a href="https://site.ludus-game.com/" target="_blank" rel="noopener noreferrer" className="store-badge store-badge--web">
-              <span className="store-badge__glyph">🌐</span>
-              <div>
-                <div className="store-badge__sub">Visit the</div>
-                <div className="store-badge__main">Game Website</div>
-              </div>
+            <a href="https://site.ludus-game.com/" target="_blank" rel="noopener noreferrer" className="store-badge store-badge--web" aria-label="Visit the game website">
+              <span className="store-badge__glyph" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" strokeWidth="1.7">
+                  <circle cx="12" cy="12" r="9" />
+                  <path d="M3 12h18M12 3c2.5 2.5 2.5 15 0 18M12 3c-2.5 2.5-2.5 15 0 18" />
+                </svg>
+              </span>
+              <span className="store-badge__text">
+                <span className="store-badge__sub">Visit the</span>
+                <span className="store-badge__main">Game Website</span>
+              </span>
             </a>
           </div>
 

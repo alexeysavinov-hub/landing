@@ -13,7 +13,7 @@ sections-a.jsx    — Nav, Hero, Featured (LUDUS), Studio
 sections-b.jsx    — Stats, News, Footer (+ contact form)
 app.jsx           — app composition + scroll/motion orchestration
 image-slot.js     — drag-and-drop image placeholder web component
-assets/           — logo + hero key art
+assets/           — logo.png + hero-keyart.webm (compressed hero video)
 ```
 
 The page is a static site. React + Babel are loaded from CDN and JSX is
