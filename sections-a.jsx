@@ -113,7 +113,7 @@ function Hero() {
       </div>
 
       <div className="hero__grid">
-        <div className="hero__keyart hero__keyart--square reveal reveal--scale" style={{ width: "500px", height: "500px" }}>
+        <div className="hero__keyart hero__keyart--square reveal reveal--scale">
           <div className="hero__keyart-rays" />
           <div className="hero__keyart-glow" />
           <video

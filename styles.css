@@ -286,7 +286,7 @@ body {
 .hero__eyebrow { margin-bottom: 26px; }
 
 .hero__title {
-  font-size: clamp(56px, 7vw, 116px);
+  font-size: clamp(40px, 11vw, 116px);
   margin-bottom: 28px;
   text-align: left;
 }
@@ -312,11 +312,13 @@ body {
 .hero__keyart {
   position: relative;
   width: 100%;
+  max-width: 500px;
   aspect-ratio: 1 / 1;
   display: grid;
   place-items: center;
   isolation: isolate;
 }
+.hero__keyart--square { width: 500px; max-width: 100%; }
 
 /* Light rays shooting up behind the heroes */
 .hero__keyart-rays {
@@ -442,11 +444,12 @@ body {
 @media (max-width: 1000px) {
   .hero { padding: 140px 28px 60px; }
   .hero__grid { grid-template-columns: 1fr; gap: 24px; text-align: center; justify-items: center; }
-  .hero__copy { padding-left: 0; }
-  .hero__title { text-align: center; }
+  .hero__grid > * { min-width: 0; max-width: 100%; }
+  .hero__copy { padding-left: 0; width: 100%; }
+  .hero__title { text-align: center; font-size: clamp(34px, 9vw, 96px); }
   .hero__sub { margin-left: auto; margin-right: auto; }
   .hero__cta { justify-content: center; }
-  .hero__keyart { max-width: 480px; margin: 0 auto; }
+  .hero__keyart, .hero__keyart--square { width: min(440px, 82vw); max-width: 100%; margin: 0 auto; }
 }
 
 .hero__scrollhint {
@@ -520,7 +523,7 @@ body {
 .featured__copy p { margin-bottom: 32px; }
 
 .featured__copy h2.featured__title {
-  font-size: clamp(38px, 4.2vw, 62px);
+  font-size: clamp(32px, 7vw, 62px);
   line-height: 1.04;
   margin: 22px 0 26px;
 }
@@ -1343,6 +1346,11 @@ body {
   .footer { padding: 80px 28px 32px; }
   .footer__grid { grid-template-columns: 1fr 1fr; gap: 40px; }
 }
+@media (max-width: 560px) {
+  .footer__grid { grid-template-columns: 1fr; gap: 32px; }
+  .footer__legal { flex-direction: column; gap: 14px; }
+}
+.footer__col a, .footer__col li { word-break: break-word; }
 
 /* ---------- Reveal animation ---------- */
 .reveal {
