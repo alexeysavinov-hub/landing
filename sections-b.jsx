@@ -152,7 +152,7 @@ function News() {
     h: "Ludus hits 10 million downloads, with new Divisions seasonal event underway",
     p: "Flagship live-ops PvP title from TOP APP GAMES crosses a major milestone alongside the launch of Divisions — a brand-new competitive ladder driving deeper ranked play.",
     url: "https://www.pocketgamer.com/ludus-merge-battle-arena/10m-downloads/",
-    img: "https://play-lh.googleusercontent.com/DbnSgl-ou7WzVsDQkOY7Yi1_3OScfEUh39DL50fSIrMb2ywuB_FyN23nPTfPKL302q1lxHIldP9e0qp-RRJvcg=w1000",
+    img: (window.__resources && window.__resources.news1) || "assets/news/news-1.jpg",
     lg: true,
     id: "news-1"
   },
@@ -162,7 +162,7 @@ function News() {
     h: "Ludus reaches 10 million downloads and introduces new competitive play feature",
     p: "GamesBeat covers the milestone and the new Divisions system that's pushing strategy mobile gameplay into a more competitive era.",
     url: "https://gamesbeat.com/ludus-10-million-downloads-competitive-play-feature/",
-    img: "https://play-lh.googleusercontent.com/Bvowm6ETQvxaj3w0GmN_HxbNjiy9KA7pgI4swUzifqVWAbS4lmZzs5g0X7cVYZYB7qmSJGY2-TqB6oZ-d9-Gi_4=w1280",
+    img: (window.__resources && window.__resources.news2) || "assets/news/news-2.jpg",
     id: "news-2"
   },
   {
@@ -171,7 +171,7 @@ function News() {
     h: "Cyprus-based game studio celebrates key milestone",
     p: "Local press spotlights TOP APP GAMES as a fast-growing European studio shipping competitive mobile experiences to players worldwide.",
     url: "https://cyprus-mail.com/2026/04/30/cyprus-based-game-studio-celebrates-key-milestone",
-    img: "https://play-lh.googleusercontent.com/rFW8cXM2qZbrCxEQhuchjUeQB9HwNzQHYovbfl6DUtZ2Sb9kLyycSB036CBlOtUUuivA3NDKiBE2GEOuG_fgvyY=w1280",
+    img: (window.__resources && window.__resources.news3) || "assets/news/news-3.jpg",
     id: "news-3"
   }];
 
@@ -183,7 +183,7 @@ function News() {
           <div className="eyebrow" style={{ marginBottom: 12 }}>Newsroom</div>
           <h2 className="display">Latest from the Studio</h2>
         </div>
-        <a href="#" className="btn btn--ghost btn--sm">All News →</a>
+        <a href="https://www.linkedin.com/company/top-app-games/posts/?feedView=all" target="_blank" rel="noopener noreferrer" className="btn btn--ghost btn--sm">All News →</a>
       </div>
 
       <div className="news__grid stagger">
@@ -298,7 +298,6 @@ function Footer() {
         <div>© 2026 TOP APP GAMES LTD · All rights reserved</div>
         <div style={{ display: "flex", gap: 28 }}>
           <a href="https://mergegame.app/en/privacy.html" target="_blank" rel="noopener noreferrer" style={{ color: "inherit", textDecoration: "none" }}>Privacy</a>
-          <a href="#" style={{ color: "inherit", textDecoration: "none" }}>Terms</a>
         </div>
       </div>
     </footer>);

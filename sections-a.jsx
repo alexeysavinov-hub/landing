@@ -42,6 +42,9 @@ function Embers({ count = 38 }) {
 
 }
 
+// Resource resolver — uses inlined standalone resources if present, else local path
+const R = (key, path) => (window.__resources && window.__resources[key]) || path;
+
 // ---------------- Ambient floating orbs ----------------
 function Orbs({ items }) {
   const orbs = React.useMemo(
@@ -91,7 +94,7 @@ function Nav({ navRef }) {
         <li><a href="#contact">Contact</a></li>
       </ul>
       <div className="nav__cta">
-        <a href="#play" className="btn btn--primary btn--sm">Play Now</a>
+        <a href="#games" className="btn btn--primary btn--sm">Play Now</a>
       </div>
     </nav>);
 
@@ -115,7 +118,7 @@ function Hero() {
           <div className="hero__keyart-glow" />
           <video
             className="hero__keyart-img hero__keyart-video"
-            src={window.__resources && window.__resources.keyartVideo || "assets/hero-keyart.webm"}
+            src={window.__resources && window.__resources.keyartVideo || "assets/hero-keyart.mp4"}
             autoPlay
             loop
             muted
@@ -155,21 +158,21 @@ function FeaturedGame() {
   const trackRef = useRef(null);
 
   const shots = [
-  { src: "https://play-lh.googleusercontent.com/Bvowm6ETQvxaj3w0GmN_HxbNjiy9KA7pgI4swUzifqVWAbS4lmZzs5g0X7cVYZYB7qmSJGY2-TqB6oZ-d9-Gi_4=w1280", cap: "01 / Battle arena" },
-  { src: "https://play-lh.googleusercontent.com/oDc_rp9Ojc2lB3kK3gyrdGKwkp9RSfiDESHrSuxP50Fh3p9YwBObTa55CykT1G5AqbRoftlAVQ0qUEDlmVgsMs8=w1280", cap: "02 / Merge mechanics" },
-  { src: "https://play-lh.googleusercontent.com/rFW8cXM2qZbrCxEQhuchjUeQB9HwNzQHYovbfl6DUtZ2Sb9kLyycSB036CBlOtUUuivA3NDKiBE2GEOuG_fgvyY=w1280", cap: "03 / PvP duel" },
-  { src: "https://play-lh.googleusercontent.com/W4My4ciJfnmGl9j0uK8tE85m7qmCToHK2AnFTrO98TIus9kAom0NjCnh9Jmkokc99Mh13LjDDKaJJF2T0VmVXg=w1280", cap: "04 / Hero roster" },
-  { src: "https://play-lh.googleusercontent.com/wZaJZVfb_-loeqVp9FrlmmZgOD-QTH3DGcXr6UV_4nrTT8iTRlHICo6X7pZ3utFGEqnFeciw8FSDfHwlf5X92Q=w1280", cap: "05 / Live event" },
-  { src: "https://play-lh.googleusercontent.com/4F8D2Sh3--4SElskt__K4SiJ2cZYOjEcim4lemzr_4IcF6AoGX03GqEIHNcdf8N85HRfLXcc2ewO4bkmhIWrdw=w1280", cap: "06 / Clan wars" },
-  { src: "https://play-lh.googleusercontent.com/IwMxwkWol_CRclTgj_kXNcIFvqjh7VbanoWnu7_yTu4fzDN8sVMFfF1TXkxqHocV4aez1SxglvFoGe47orKJmg=w1280", cap: "07 / Card deck" },
-  { src: "https://play-lh.googleusercontent.com/N73cKCfwABHPZGXspx9UWTh9NXmRjDhki43ikpPn90uYyUpNrqXxRXnwVCQoVsPxfgUvQEp2bkyWo5bPbuFz8Q=w1280", cap: "08 / Tournaments" },
-  { src: "https://play-lh.googleusercontent.com/y8V5EM1pQgsrCT1gebIAV2355Vk0L_A49BKX0LDlQdwK7Ifhgn2ooDhqtAz2FxIQfy-QLtbbnQdzUuwZeIfqAg=w1280", cap: "09 / Battle pass" },
-  { src: "https://play-lh.googleusercontent.com/CJ5Ozv8Qlv1SIDOmKp3onPwfvZdZOUdadbezjtTZNWCHSM-g-PkByQZt-eLNkKcbuwkcBiIC1D-Ors4tuRWCZA=w1280", cap: "10 / Rewards" }];
+  { src: R("shot1", "assets/gallery/shot-1.jpg"), cap: "01 / Battle arena" },
+  { src: R("shot2", "assets/gallery/shot-2.jpg"), cap: "02 / Merge mechanics" },
+  { src: R("shot3", "assets/gallery/shot-3.jpg"), cap: "03 / PvP duel" },
+  { src: R("shot4", "assets/gallery/shot-4.jpg"), cap: "04 / Hero roster" },
+  { src: R("shot5", "assets/gallery/shot-5.jpg"), cap: "05 / Live event" },
+  { src: R("shot6", "assets/gallery/shot-6.jpg"), cap: "06 / Clan wars" },
+  { src: R("shot7", "assets/gallery/shot-7.jpg"), cap: "07 / Card deck" },
+  { src: R("shot8", "assets/gallery/shot-8.jpg"), cap: "08 / Tournaments" },
+  { src: R("shot9", "assets/gallery/shot-9.jpg"), cap: "09 / Battle pass" },
+  { src: R("shot10", "assets/gallery/shot-10.jpg"), cap: "10 / Rewards" }];
 
 
   const nudge = (dir) => {
     const total = shots.length;
-    setIdx((i) => Math.max(0, Math.min(total - 2, i + dir)));
+    setIdx((i) => Math.max(0, Math.min(total - 3, i + dir)));
   };
 
   return (
@@ -253,7 +256,7 @@ function FeaturedGame() {
             <video
               className="trailer-video"
               src="https://play-games.googleusercontent.com/vp/mp4/1280x720/Lny-7jxVEig.mp4"
-              poster="https://play-lh.googleusercontent.com/DbnSgl-ou7WzVsDQkOY7Yi1_3OScfEUh39DL50fSIrMb2ywuB_FyN23nPTfPKL302q1lxHIldP9e0qp-RRJvcg=w1280"
+              poster={R("shot7", "assets/gallery/shot-7.jpg")}
               controls
               playsInline
               preload="metadata">

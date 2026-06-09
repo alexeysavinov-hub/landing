@@ -691,24 +691,29 @@ body {
 .carousel__track {
   display: flex; gap: 22px;
   transition: transform .55s cubic-bezier(.4,.05,.15,1);
-  --shot-w: 560px;
+  --shot-w: 288px;
 }
 .shot {
   flex: 0 0 var(--shot-w);
-  aspect-ratio: 16 / 9;
-  border-radius: 20px;
+  aspect-ratio: 9 / 16;
+  border-radius: 22px;
   overflow: hidden;
-  background: linear-gradient(160deg, #2a0e54, #170628);
-  border: 1px solid rgba(255,255,255,0.14);
+  background: linear-gradient(160deg, #2a1150, #120626);
+  border: 1px solid rgba(232,234,240,0.12);
   position: relative;
   box-shadow: 0 24px 50px -20px rgba(0,0,0,0.55);
-  transition: transform .35s ease, border-color .35s ease;
+  transition: transform .35s var(--ease-out-soft, ease), border-color .35s ease, box-shadow .35s ease;
 }
-.shot:hover { transform: translateY(-6px); border-color: var(--pink-glow); }
+.shot:hover {
+  transform: translateY(-6px);
+  border-color: var(--violet);
+  box-shadow: 0 30px 60px -22px rgba(123,92,240,0.45);
+}
 .shot__img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
+  object-position: center top;
   display: block;
   background: radial-gradient(circle at 50% 40%, #2a1150, #120626);
 }
@@ -729,7 +734,7 @@ body {
 }
 
 @media (max-width: 900px) {
-  .carousel__track { --shot-w: 320px; }
+  .carousel__track { --shot-w: 230px; }
 }
 
 @media (max-width: 900px) {
